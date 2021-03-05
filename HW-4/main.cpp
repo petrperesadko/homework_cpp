@@ -1,7 +1,3 @@
-//
-// Created by Петр on 19.02.2021.
-//
-// static
 #include <iostream>
 #include <cmath>
 class Figure{
