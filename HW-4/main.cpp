@@ -2,9 +2,9 @@
 #include <cmath>
 class Figure{
 public:
-    virtual double perimeter() = 0;
-    virtual double square() = 0;
-    virtual int angles_amount() = 0;
+    virtual double perimeter() const = 0;
+    virtual double square() const = 0;
+    virtual int angles_amount() const = 0;
 };
 
 class Circle : public Figure{
@@ -13,7 +13,7 @@ public:
     Circle(double r){
         this->r = r;
     }
-    double perimeter () override{
+    double perimeter () const override{
         return 2 * 3.14 * r;
     }
     double square (){
@@ -34,7 +34,7 @@ public:
     Quad(double a){
         this->a = a;
     }
-    double perimeter() override {
+    double perimeter() const {
         return 4 * a;
     }
     double square() override {
@@ -103,12 +103,19 @@ public:
     int angles_amount() override{
         return 0;
     }
-
 private:
     double a;
     double b;
 };
-
+int angles_amount(const Figure& figure){
+    return figure.angles_amount();
+}
+double perimeter(const Figure& figure){
+    return figure.perimeter();
+}
+double square(const Figure& figure){
+    return figure.square();
+}
 
 int main(){
 
