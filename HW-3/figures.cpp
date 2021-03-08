@@ -23,9 +23,6 @@ public:
     double square (){
         return r * r * 3.14;
     }
-    static double Pi(){
-        return std::acos(-1);
-    }
     int angles_amount() override{
         return 0;
     }

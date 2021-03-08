@@ -10,19 +10,14 @@ public:
 class Circle : public Figure{
     friend class Rectangle;
 public:
-    Circle(double r){
-        this->r = r;
-    }
+    Circle(double r): r(r){    };
     double perimeter () const override{
         return 2 * 3.14 * r;
     }
-    double square (){
+    double square () const override{
         return r * r * 3.14;
     }
-    static double Pi(){
-        return std::acos(-1);
-    }
-    int angles_amount() override{
+    int angles_amount() const override{
         return 0;
     }
 private:
@@ -31,16 +26,14 @@ private:
 
 class Quad : public Figure {
 public:
-    Quad(double a){
-        this->a = a;
-    }
-    double perimeter() const {
+    Quad(double a): a(a){    };
+    double perimeter() const override{
         return 4 * a;
     }
-    double square() override {
+    double square() const override {
         return a * a;
     }
-    int angles_amount() override{
+    int angles_amount() const override{
         return 4;
     }
 private:
@@ -49,37 +42,34 @@ private:
 
 class Rectangle : public Figure {
 public:
-    Rectangle(double a, double b){
-        this->a = a;
-        this->b = b;
-    }
-    double perimeter() override {
+    Rectangle(double a, double b): a(a), b(b){    };
+    double perimeter()const override {
         return 2 * (a + b);
     }
-    double square() override {
+    double square()const override {
         return a * b;
     }
-    int angles_amount() override{
+    int angles_amount()const override{
         return 4;
     }
 private:
     double a;
     double b;
 };
-class Ttiangle: public Figure{
+class Triangle: public Figure{
 public:
-    Ttiangle(double a, double b, double angle){
+    Triangle(double a, double b, double angle){
         this->a = a;
         this->b = b;
         this->angle = angle;
     }
-    double perimeter() override {
+    double perimeter()const override {
         return a + b + sqrt(a * a + b * b - 2 * a * b *cos(angle));
     }
-    double square() override {
+    double square()const override {
         return 0.5 * std::sin(angle) * a * b;
     }
-    int angles_amount() override{
+    int angles_amount()const override{
         return 3;
     }
 
@@ -90,17 +80,14 @@ private:
 };
 class Elipse: public Figure{
 public:
-    Elipse(double a, double b){
-        this->b = b;
-        this->a = a;
-    }
-    double perimeter() override{
+    Elipse(double a, double b): a(a), b(b){    };
+    double perimeter()const override{
         return 4 * ((3.1415926 * a * b - (a - b)*(a - b)) / (a + b));
     }
-    double square() override {
+    double square()const override {
         return 3.1415926 * a * b;
     }
-    int angles_amount() override{
+    int angles_amount()const override{
         return 0;
     }
 private:
@@ -119,6 +106,8 @@ double square(const Figure& figure){
 
 int main(){
 
+Quad q (5);
+std::cout << square(q);
 
 
     return 0;
